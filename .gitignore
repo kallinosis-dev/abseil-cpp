@@ -21,3 +21,6 @@ _vpc_/
 # Visual Studio projects
 *.vcxproj
 *.vcxproj.*
+
+[Dd]ebug/
+[Rr]elease/
