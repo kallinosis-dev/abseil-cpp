@@ -225,29 +225,49 @@ $Project "abseil"
         $File "absl\flags\usage_config.h"
         $File "absl\flags\marshalling.cc"
         $File "absl\flags\marshalling.h"
-        $File "absl\flags\internal\commandlineflag.cc"
+        $File "absl\flags\internal\commandlineflag.cc" \
+            "absl\flags\internal\flag.cc" \
+            "absl\flags\internal\usage.cc"
+        {
+            $Configuration 
+            { 
+                $Compiler 
+                {
+                    $ObjectFileName "$(IntDir)/internal_flags/"
+                }
+            }
+        }
         $File "absl\flags\internal\commandlineflag.h"
-        $File "absl\flags\commandlineflag.cc"
         $File "absl\flags\commandlineflag.h"
         $File "absl\flags\internal\private_handle_accessor.cc"
         $File "absl\flags\internal\private_handle_accessor.h"
         $File "absl\flags\reflection.cc"
         $File "absl\flags\reflection.h"
         $File "absl\flags\internal\registry.h"
-        $File "absl\flags\internal\flag.cc"
         $File "absl\flags\internal\flag.h"
         $File "absl\flags\internal\sequence_lock.h"
-        $File "absl\flags\flag.cc"
         $File "absl\flags\declare.h"
         $File "absl\flags\flag.h"
         $File "absl\flags\internal\flag_msvc.inc"
-        $File "absl\flags\internal\usage.cc"
         $File "absl\flags\internal\usage.h"
-        $File "absl\flags\usage.cc"
         $File "absl\flags\usage.h"
         $File "absl\flags\parse.cc"
         $File "absl\flags\internal\parse.h"
         $File "absl\flags\parse.h"
+
+        
+        $File "absl\flags\commandlineflag.cc" \
+            "absl\flags\usage.cc" \
+            "absl\flags\flag.cc"
+        {
+            $Configuration 
+            { 
+                $Compiler 
+                {
+                    $ObjectFileName "$(IntDir)/flags/"
+                }
+            }
+        }
     }
 
     $Folder "Functional"
@@ -273,49 +293,70 @@ $Project "abseil"
 
     $Folder "Log"
     {
+        $File "absl\log\internal\check_op.cc" \
+            "absl\log\internal\conditions.cc" \
+            "absl\log\internal\log_format.cc" \
+            "absl\log\internal\globals.cc" \
+            "absl\log\internal\proto.cc" \
+            "absl\log\internal\log_message.cc" \
+            "absl\log\internal\log_sink_set.cc" \
+            "absl\log\internal\nullguard.cc"
+        {
+            $Configuration 
+            { 
+                $Compiler 
+                {
+                    $ObjectFileName "$(IntDir)/internal_log/"
+                }
+            }
+        }
+
         $File "absl\log\internal\check_impl.h"
-        $File "absl\log\internal\check_op.cc"
         $File "absl\log\internal\check_op.h"
-        $File "absl\log\internal\conditions.cc"
         $File "absl\log\internal\conditions.h"
         $File "absl\log\internal\config.h"
         $File "absl\log\internal\flags.h"
-        $File "absl\log\internal\log_format.cc"
         $File "absl\log\internal\log_format.h"
-        $File "absl\log\internal\globals.cc"
         $File "absl\log\internal\globals.h"
         $File "absl\log\internal\log_impl.h"
-        $File "absl\log\internal\proto.cc"
         $File "absl\log\internal\proto.h"
-        $File "absl\log\internal\log_message.cc"
         $File "absl\log\internal\log_message.h"
-        $File "absl\log\internal\log_sink_set.cc"
         $File "absl\log\internal\log_sink_set.h"
-        $File "absl\log\internal\nullguard.cc"
         $File "absl\log\internal\nullguard.h"
         $File "absl\log\internal\nullstream.h"
         $File "absl\log\internal\strip.h"
         $File "absl\log\internal\voidify.h"
         $File "absl\log\internal\append_truncated.h"
+        $File "absl\log\internal\structured.h"
+
+        $File "absl\log\die_if_null.cc" \
+            "absl\log\flags.cc" \
+            "absl\log\globals.cc" \
+            "absl\log\initialize.cc" \
+            "absl\log\log_entry.cc" \
+            "absl\log\log_sink.cc"
+        {
+            $Configuration 
+            { 
+                $Compiler 
+                {
+                    $ObjectFileName "$(IntDir)/log/"
+                }
+            }
+        }
+
         $File "absl\log\absl_check.h"
         $File "absl\log\absl_log.h"
         $File "absl\log\check.h"
-        $File "absl\log\die_if_null.cc"
         $File "absl\log\die_if_null.h"
-        $File "absl\log\flags.cc"
         $File "absl\log\flags.h"
-        $File "absl\log\globals.cc"
         $File "absl\log\globals.h"
-        $File "absl\log\initialize.cc"
         $File "absl\log\initialize.h"
         $File "absl\log\log.h"
-        $File "absl\log\log_entry.cc"
         $File "absl\log\log_entry.h"
-        $File "absl\log\log_sink.cc"
         $File "absl\log\log_sink.h"
         $File "absl\log\log_sink_registry.h"
         $File "absl\log\log_streamer.h"
-        $File "absl\log\internal\structured.h"
         $File "absl\log\structured.h"
     }
 
@@ -428,7 +469,16 @@ $Project "abseil"
         $File "absl\strings\substitute.h"
         $File "absl\strings\ascii.cc"
         $File "absl\strings\charconv.cc"
-        $File "absl\strings\escaping.cc"
+        $File "absl\strings\escaping.cc"        
+        {
+            $Configuration 
+            { 
+                $Compiler 
+                {
+                    $ObjectFileName "$(IntDir)/strings/"
+                }
+            }
+        }
         $File "absl\strings\internal\charconv_bigint.cc"
         $File "absl\strings\internal\charconv_bigint.h"
         $File "absl\strings\internal\charconv_parse.cc"
@@ -449,6 +499,15 @@ $Project "abseil"
         $File "absl\strings\substitute.cc"
         $File "absl\strings\internal\char_map.h"
         $File "absl\strings\internal\escaping.cc"
+        {
+            $Configuration 
+            { 
+                $Compiler 
+                {
+                    $ObjectFileName "$(IntDir)/internal_strings/"
+                }
+            }
+        }
         $File "absl\strings\internal\escaping.h"
         $File "absl\strings\internal\ostringstream.h"
         $File "absl\strings\internal\resize_uninitialized.h"
